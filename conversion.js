@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 
-var array = fs.readFileSync("./mam-rotated-scaled.hpgl").toString().split(";");
+var array = fs.readFileSync("./mam-rotated-overcut.hpgl").toString().split(";");
 
 let pdCount = 0;
 
@@ -21,10 +21,10 @@ for (let i = 0; i < array.length; i++) {
     }
     array[i] = groups.filter(Boolean).join(";\n");
 
-    if (pdCount % 15 === 0) {
-      const insert = "PU;\nSP0;\nPU;\nSP2;\nPU";
-      array.splice(i, 0, insert);
-    }
+    // if (pdCount % 15 === 0) {
+    //   const insert = "PU;\nSP0;\nPU;\nSP2;\nPU";
+    //   array.splice(i, 0, insert);
+    // }
   } else if (array[i].includes("PU")) {
     const [_, x, y] = array[i].split(/[PU,]+/);
     if (x !== undefined && y !== undefined) {
@@ -33,4 +33,4 @@ for (let i = 0; i < array.length; i++) {
   }
 }
 
-fs.writeFileSync("./mam-converted-scaled.hpgl", array.join(";\n"));
+fs.writeFileSync("./mam-converted-overcut.hpgl", array.join(";\n"));
