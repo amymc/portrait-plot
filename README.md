@@ -8,16 +8,14 @@ https://www.csun.io/2021/12/29/plotting-old-pictures.html
 - I rotated it by 90 degrees and set the page size to US Letter size.
 - Then File -> Save as and save as HPGL (Hewlett Packard Graphics Library)
 - In the HPGL output dialog box, on the Plot features tab, set Overcut to 0.00
-
-I created the conversion script to modify the code to get it work with the plotter.
-The script does the following:
-
-- Replaces SP1 with SP2 because the pen 1 holder is broken on the plotter.
-- Replaces all the PD X,Y commands with PA X, Y commands instead.
-- Then splits all those PA commands into their own individual lines.
-- Replaces any PU X, Y commands with PU; PA X, Y: PD
-
 - Ran the script `node conversion.js`
+  
+I created the conversion script to modify the code to get it work with the plotter.
+  The script does the following:
+  - Replaces SP1 with SP2 because the pen 1 holder is broken on the plotter.
+  - Replaces all the PD X,Y commands with PA X, Y commands instead.
+  - Then splits all those PA commands into their own individual lines.
+  - Replaces any PU X, Y commands with PU; PA X, Y: PD
 
 Using the plotter tools chunker - https://github.com/WesleyAC/plotter-tools/tree/master/chunker
 
